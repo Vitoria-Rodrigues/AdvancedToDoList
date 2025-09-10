@@ -54,3 +54,20 @@ let oldInputValue;
             }
         });
     };
+
+    const getSearchTodos = (search) => {
+        const todos = document.querySelectorAll(".todo");
+        todos.forEach((todo) => {
+
+            let todoTitle = todo.querySelector("h3").innerText.toLowerCase();
+
+            const normalizeSearch = search.toLowerCase();
+
+            todo.style.display = "flex";
+
+            if(!todoTitle.includes(normalizeSearch)){
+                todo.style.display = "none";
+            }
+
+        });
+    }
