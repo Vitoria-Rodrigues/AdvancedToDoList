@@ -137,3 +137,8 @@ document.addEventListener("click", (e) => {
         oldInputValue = todoTitle;
     }
 });
+
+cancelEditBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    toggleForms();
+});
