@@ -195,3 +195,11 @@ const saveTodoLocalStorage = (todo) => {
     todos.push(todo);
     localStorage.setItem("todos", JSON.stringify(todos));
 };
+
+const removeTodosLocalStorage = (todoText) => {
+        const todos = getTodosLocalStorage();
+
+        const filteredTodos = todos.filter((todo) => todo.text !== todoText);
+
+        localStorage.setItem("todos", JSON.stringify(filteredTodos));
+    };
