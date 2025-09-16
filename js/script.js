@@ -35,6 +35,20 @@ let oldInputValue;
         deleteBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
         todo.appendChild(deleteBtn);
 
+        //Utilizando dados da LocalStorage
+        if(done){
+            todo.classList.add("done");
+        }
+
+        if(save){
+            saveTodoLocalStorage({text, done});
+        }
+
+        todoList.appendChild(todo);
+
+        todoInput.value = "";
+        todoInput.focus();
+
     };
     const toggleForms = () => {
         editForm.classList.toggle("hide");
@@ -211,3 +225,13 @@ const updateTodosStatusLocalStorage = (todoText) => {
 
         localStorage.setItem("todos", JSON.stringify(todos));
     };
+
+    const updateTodosLocalStorage = (todoOldText, todoNewText) => {
+        const todos = getTodosLocalStorage();
+
+       todos.map((todo) => todo.text === todoOldText ? (todo.text = todoNewText) : null);
+
+        localStorage.setItem("todos", JSON.stringify(todos));
+    };
+
+    loadTodos();
